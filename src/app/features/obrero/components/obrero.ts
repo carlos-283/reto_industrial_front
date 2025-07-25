@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { ObreroService } from '../../services/obrero'
-import { Obrero } from '../../models/obrero'
+import { ObreroService } from '../services/obrero'
+import { Obrero } from '../models/obrero'
 
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -17,9 +17,9 @@ import { firstValueFrom } from 'rxjs';
 
 export class ObreroComponent {
 
-  obreros: Obrero[] = []
+  obreros: Obrero[] = [];
 
-  nuevoObrero: Omit<Obrero, 'id'> = { nombre: '', apellido: '', area: 0 };
+  nuevoObrero: Obrero = { nombre: '', apellido: '', area: 0 };
 
   selectedObrero: Obrero | null = null
 
@@ -42,17 +42,6 @@ export class ObreroComponent {
     }
   }
 
-
-  addObrero() {
-    if (this.nuevoObrero.nombre && this.nuevoObrero.apellido && this.nuevoObrero.area) {
-
-      this.obreroService.addObrero(this.nuevoObrero);
-      this.nuevoObrero = { nombre: '', apellido: '', area: 0 };
-      this.loadObreros();
-
-    }
-  }
-
   updateObrero() {
     if (this.selectedObrero) {
       this.obreroService.updateObrero(this.selectedObrero);
@@ -61,7 +50,9 @@ export class ObreroComponent {
     }
   }
 
-  async deleteObrero(id: number) {
+  async deleteObrero(id: number | undefined) {
+    if(!id)
+      return;
     console.log(id);
     await firstValueFrom(this.obreroService.deleteObrero(id));
     this.loadObreros();

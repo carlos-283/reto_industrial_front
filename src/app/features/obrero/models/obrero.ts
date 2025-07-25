@@ -1,5 +1,5 @@
 export interface Obrero {
-  id: number;
+  id?: number;
   nombre: string;
   apellido: string;
   area: number;

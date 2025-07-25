@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
-import { ObreroComponent } from './components/obrero/obrero';
-import { ObreroFormularioComponent } from './components/obrero/obreroFormulario';
+import { ObreroComponent } from './features/obrero/components/obrero';
+import { ObreroFormularioComponent } from './features/obrero/components/obreroFormulario';
 
 export const routes: Routes = [
     { path:"", component:ObreroComponent},
