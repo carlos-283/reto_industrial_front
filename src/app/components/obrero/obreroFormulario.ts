@@ -8,14 +8,14 @@ import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-obrero',
-  templateUrl: './obrero.html',
+  templateUrl: './obreroformulario.html',
   styleUrl: './obrero.css',
 
   standalone: true,
   imports: [CommonModule, FormsModule],
 })
 
-export class ObreroComponent {
+export class ObreroFormularioComponent {
 
   obreros: Obrero[] = []
 
@@ -61,9 +61,8 @@ export class ObreroComponent {
     }
   }
 
-  async deleteObrero(id: number) {
-    console.log(id);
-    await firstValueFrom(this.obreroService.deleteObrero(id));
+  deleteObrero(id: number) {
+    this.obreroService.deleteObrero(id);
     this.loadObreros();
   }
 

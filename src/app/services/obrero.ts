@@ -11,25 +11,13 @@ export class ObreroService {
   
     private apiUrl = environment.apiUrl;
 
-    private obreros: Obrero[] = [
-    // { id: 1, name: 'Item One', description: 'First Item' },
-     { id: 1, nombre: 'Pedro', apellido: 'Paramo', area:1},
-    ];
+    private obreros: Obrero[] = [    ];
 
   private nextId = 3;
 
   constructor(private http: HttpClient) {}
 
   getObreros(): Observable<any> {
-
-    try{
-      console.log("123")
-      console.log(this.http.get(this.apiUrl+"/obreros"));
-    }
-    catch(e){
-      console.log("error")
-      console.log(e)
-    }
 
     return this.http.get(this.apiUrl+"/obreros");
 
@@ -50,8 +38,8 @@ export class ObreroService {
     }
   }
 
-  deleteObrero(id: number): void {
-    this.obreros = this.obreros.filter(obrero => obrero.id !== id);
+  deleteObrero(id: number): Observable<any> {
+    return this.http.delete(this.apiUrl + "/obreros/" + id);
   }
 
 }

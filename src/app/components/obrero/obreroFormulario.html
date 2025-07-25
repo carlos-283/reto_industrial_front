@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Formulario de Medicamento</title>
+  <script>
+    function goBack() {
+      window.location.href = 'http://localhost:3000/medicamentos';
+    }
+
+    function handleSubmit() {
+      alert("Formulario enviado (simulado)");
+    }
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-stone-800">
+  <!-- Volver Button -->
+  <div class="">
+    <button onclick="" class="px-4 py-2 text-white rounded hover:bg-blue-700 transition">
+      <a [href]="'/'">Salir</a>
+    </button>
+  </div>
+
+  <!-- Main Form -->
+  <main class="min-h-screen flex items-center justify-center bg-slate-50 px-4">
+    <div class="relative flex flex-col rounded-xl bg-white p-8 shadow-lg max-w-md w-full">
+      <h4 class="text-xl font-medium text-slate-800 mb-1">Nuevo obrero</h4>
+      <p class="text-slate-500 font-light mb-6">Completa los datos del nuevo obrero</p>
+
+      <form onsubmit="event.preventDefault();">
+        <div class="flex flex-col gap-6 mb-4">
+          <!-- Nombre -->
+          <div>
+            <label class="block mb-2 text-sm text-slate-600">Nombre</label>
+            <input type="text" name="nombre" value="Paracetamol" placeholder="Nombre del medicamento"
+              class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow" />
+            <p class="text-red-500 text-sm mt-1">Este campo es obligatorio</p>
+          </div>
+          <div>
+            <label class="block mb-2 text-sm text-slate-600">Apellido</label>
+            <input type="text" name="nombre" value="Paracetamol" placeholder="Apellido"
+              class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow" />
+            <p class="text-red-500 text-sm mt-1">Este campo es obligatorio</p>
+          </div>
+
+        </div>
+
+        <!-- Submit Button -->
+        <button type="button" onclick="handleSubmit()"
+          class="w-full bg-slate-800 text-white text-sm py-2 px-4 mt-2 rounded-md transition-all shadow-md hover:shadow-lg focus:bg-slate-700 hover:bg-slate-700">
+          Finalizar creación
+        </button>
+      </form>
+    </div>
+  </main>
+</body>
+
+</html>
