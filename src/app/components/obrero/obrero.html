@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Inventario Medigroup</title>
+    <title>Gestor empleados</title>
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body class="bg-stone-100 min-h-screen">
@@ -14,7 +14,7 @@
         
 
         <a
-          href="#"
+          href="/0"
           class="bg-slate-800 hover:bg-blue-600 text-white px-4 py-2 rounded text-sm self-start"
         >
           Agregar empleado
@@ -35,18 +35,20 @@
           </thead>
           <tbody>
             <!-- Mock Row 1 -->
-            <tr>
-              <td class="py-2 px-4 border-b">1</td>
-              <td class="py-2 px-4 border-b">Paracetamol</td>
-              <td class="py-2 px-4 border-b">Analgésicos</td>
-              <td class="py-2 px-4 border-b">50</td>
+            <tr *ngFor="let obr of obreros">
+              
+              <td class="py-2 px-4 border-b">{{obr.id}}</td>
+              <td class="py-2 px-4 border-b">{{obr.nombre}}</td>
+              <td class="py-2 px-4 border-b">{{obr.apellido}}</td>
+              <td class="py-2 px-4 border-b">{{obr.area}}</td>
               <td class="py-2 px-4 border-b">
                 <a
-                  href="#"
+                  [href]="'/' + obr.id"
                   class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1 rounded mr-2"
                   >Editar</a
                 >
                 <button
+                  (click) = "deleteObrero(obr.id)"
                   class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded"
                 >
                   Eliminar
